@@ -1,50 +1,52 @@
-# React + TypeScript + Vite
+### `UI Package(@repo/ui)`
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## ** AspectRatio **
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Source
 
-## Expanding the ESLint configuration
+[src/components/AspectRatio - front-common-ui-kit]
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## ** Children **
 
-- Configure the top-level `parserOptions` property like this:
+-- Root
+-- Image
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Example
+
+# Without Container
+
+```jsx
+<AspectRatio ratio={16 / 8}>
+  <AspectRatio.Image src="" alt="" className="" />
+</AspectRatio>
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+# With Container
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```jsx
+<div style={{ backgroundColor: '#dddddd', width: '300px' }}>
+  <AspectRatio ratio={16 / 8}>
+    <AspectRatio.Image src="" alt="" className="" />
+  </AspectRatio>
+</div>
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+---
+
+## ** TextArea **
+
+## Source
+
+[src/components/TextArea - front-common-ui-kit]
+
+## ** Children **
+
+-- Root
+
+## Example
+
+```jsx
+<Textarea className="" placeholder="type message" />
 ```
