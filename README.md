@@ -1,21 +1,25 @@
-### `UI Package(@repo/ui)`
+# front-common-ui-kit
 
----
+## Installation
 
-## ** AspectRatio **
+```sh
+$ npm i blahblah-front-common-ui-kit
+```
+
+## AspectRatio
 
 ## Source
 
 [src/components/AspectRatio - front-common-ui-kit]
 
-## ** Children **
+## Children
 
--- Root
--- Image
+- Root
+- Image
 
-## Example
+## Usage
 
-# Without Container
+### Without Container
 
 ```jsx
 <AspectRatio ratio={16 / 8}>
@@ -23,10 +27,10 @@
 </AspectRatio>
 ```
 
-# With Container
+### With Container
 
 ```jsx
-<div style={{ backgroundColor: '#dddddd', width: '300px' }}>
+<div style={{ width: '300px' }}>
   <AspectRatio ratio={16 / 8}>
     <AspectRatio.Image src="" alt="" className="" />
   </AspectRatio>
@@ -35,17 +39,17 @@
 
 ---
 
-## ** TextArea **
+## TextArea
 
 ## Source
 
 [src/components/TextArea - front-common-ui-kit]
 
-## ** Children **
+## Children
 
--- Root
+- Root
 
-## Example
+## Usage
 
 ```jsx
 <Textarea className="" placeholder="type message" />
