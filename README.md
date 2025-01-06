@@ -30,7 +30,7 @@ $ npm i blahblah-front-common-ui-kit
 ### With Container
 
 ```jsx
-<div style={{ width: '300px' }}>
+<div style={{ width: "300px" }}>
   <AspectRatio ratio={16 / 8}>
     <AspectRatio.Image src="" alt="" className="" />
   </AspectRatio>
@@ -53,4 +53,22 @@ $ npm i blahblah-front-common-ui-kit
 
 ```jsx
 <Textarea className="" placeholder="type message" />
+```
+
+## **Pagination**
+
+### Children
+
+- Root
+- Buttons
+- Navigator
+
+### Example
+
+```jsx
+<Pagination total={235} value={0} onPageChange={handlePageChange}>
+  <Pagination.Navigator style={{ display: "flex" }}>
+    <Pagination.Buttons />
+  </Pagination.Navigator>
+</Pagination>
 ```
