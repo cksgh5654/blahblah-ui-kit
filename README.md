@@ -65,12 +65,13 @@ $ npm i blahblah-front-common-ui-kit
 
 ### Example
 
-```jsx
+`````jsx
 <Pagination total={235} value={0} onPageChange={handlePageChange}>
   <Pagination.Navigator style={{ display: "flex" }}>
     <Pagination.Buttons />
   </Pagination.Navigator>
 </Pagination>
+<<<<<<< HEAD
 ```
 
 ## **Popover**
@@ -89,3 +90,30 @@ $ npm i blahblah-front-common-ui-kit
   <Popover.Content>Place content for the popover here.</Popover.Content>
 </Popover>
 ```
+=======
+## Tabs
+
+## Source
+
+[src/components/Tabs - front-common-ui-kit]
+
+## Children
+
+- Root
+- List
+- Trigger
+- Content
+
+## Usage
+
+````jsx
+<Tabs.Root defaultValue="value1">
+  <Tabs.List>
+    <Tabs.Trigger value="value1">Id</Tabs.Trigger>
+    <Tabs.Trigger value="value2">Password</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="value1">Id Content</Tabs.Content>
+  <Tabs.Content value="value2">Password Content</Tabs.Content>
+</Tabs.Root>
+`````
+>>>>>>> 884fd297a2cb3d92e03b1ef58a08a42df4b0f85e
