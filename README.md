@@ -67,7 +67,6 @@ $ npm i blahblah-front-common-ui-kit
 - Trigger
 - Value
 - Icon
-- Root
 - Content
 - Item
 
