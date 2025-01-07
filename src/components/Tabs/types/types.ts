@@ -18,6 +18,7 @@ export interface ListProps extends PropsWithChildren {
 export interface TriggerProps extends PropsWithChildren {
   value: string;
   className?: string;
+  onClick?: () => void;
 }
 
 /* Content Component */

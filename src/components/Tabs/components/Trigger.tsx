@@ -2,12 +2,13 @@ import { FC } from "react";
 import { TriggerProps } from "../types/types";
 import { useTabsContext } from "./Root";
 
-const Trigger: FC<TriggerProps> = ({ children, value, className }) => {
+const Trigger: FC<TriggerProps> = ({ children, value, className, onClick }) => {
   const { handleClickTrigger } = useTabsContext();
   return (
     <li
       onClick={() => {
         handleClickTrigger(value);
+        onClick?.();
       }}
       className={
         className
