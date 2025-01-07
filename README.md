@@ -72,7 +72,7 @@ $ npm i blahblah-front-common-ui-kit
 
 ## Usage
 
-````jsx
+```jsx
 const [selectedMenu, setSelectedMenu] = useState < string > '';
 
 const handleMenu = (value: string) => {
@@ -101,6 +101,8 @@ const options = ['apple', 'banana', 'blueberry', 'grapes', 'pineapple'];
     ))}
   </Select.Content>
 </Select>;
+```
+
 ## **Pagination**
 
 ### Children
@@ -113,11 +115,11 @@ const options = ['apple', 'banana', 'blueberry', 'grapes', 'pineapple'];
 
 ```jsx
 <Pagination total={235} value={0} onPageChange={handlePageChange}>
-  <Pagination.Navigator style={{ display: "flex" }}>
+  <Pagination.Navigator style={{ display: 'flex' }}>
     <Pagination.Buttons />
   </Pagination.Navigator>
 </Pagination>
-````
+```
 
 ## Tabs
 
