@@ -50,6 +50,7 @@ const Pagination: FC<PagenationProps> & PaginationCompoundProps = (props) => {
     onPageChange,
     blockSize = 10,
     pageSize = 20,
+    ...restProps
   } = props;
   const [currentPage, setCurrentPage] = useState(value);
 
@@ -92,7 +93,7 @@ const Pagination: FC<PagenationProps> & PaginationCompoundProps = (props) => {
 
   return (
     <PaginationContext.Provider value={contextValue}>
-      <div {...props}>{children}</div>
+      <div {...restProps}>{children}</div>
     </PaginationContext.Provider>
   );
 };
