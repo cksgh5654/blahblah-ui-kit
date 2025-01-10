@@ -7,8 +7,8 @@ const Trigger: FC<TriggerProps> = ({ children, value, className, onClick }) => {
   return (
     <li
       onClick={() => {
-        handleClickTrigger(value);
         onClick?.();
+        handleClickTrigger(value);
       }}
       className={
         className
