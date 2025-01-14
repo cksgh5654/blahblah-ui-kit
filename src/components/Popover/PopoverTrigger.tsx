@@ -1,7 +1,13 @@
-import { ReactNode, useContext, useEffect, useRef } from "react";
+import {
+  HTMLAttributes,
+  ReactNode,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
 import { PopoverContext } from ".";
 
-interface PopoverTriggerProps {
+interface PopoverTriggerProps extends HTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: ReactNode;
 }

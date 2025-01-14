@@ -6,6 +6,7 @@ import {
   ReactNode,
   SetStateAction,
   useState,
+  useEffect,
 } from "react";
 import PopoverTrigger from "./PopoverTrigger";
 import PopoverContent from "./PopoverContent";
@@ -20,7 +21,12 @@ interface PopoverContextProps extends HTMLAttributes<HTMLDivElement> {
   setTriggerRect: Dispatch<SetStateAction<DOMRect>>;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  position: "bottom-left" | "bottom-center" | "bottom-right";
+  position:
+    | "bottom-left"
+    | "bottom-center"
+    | "bottom-right"
+    | "bottom"
+    | "bottom-fixed";
 }
 
 export const PopoverContext = createContext<PopoverContextProps>({
@@ -34,25 +40,53 @@ export const PopoverContext = createContext<PopoverContextProps>({
 interface PopoverProps {
   children: ReactNode;
   className?: string;
-  position?: "bottom-left" | "bottom-center" | "bottom-right";
+  position?:
+    | "bottom-left"
+    | "bottom-center"
+    | "bottom-right"
+    | "bottom"
+    | "bottom-fixed";
+  isOpen?: boolean;
+  onToggle?: (isOpen: boolean) => void;
 }
-
 const Popover: FC<PopoverProps> & PopoverCompoundProps = (props) => {
-  const { children, position = "bottom-right" } = props;
+  const {
+    children,
+    position = "bottom",
+    isOpen: externalIsOpen,
+    onToggle,
+    ...rest
+  } = props;
   const [triggerRect, setTriggerRect] = useState(new DOMRect());
-  const [isOpen, setIsOpen] = useState(false);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (externalIsOpen !== undefined) {
+      setInternalIsOpen(externalIsOpen);
+    }
+  }, [externalIsOpen]);
+
+  const setIsOpen = (value: SetStateAction<boolean>) => {
+    setInternalIsOpen((prevState) => {
+      const newValue = typeof value === "function" ? value(prevState) : value;
+      if (onToggle) {
+        onToggle(newValue);
+      }
+      return newValue;
+    });
+  };
 
   const contextValue = {
     triggerRect,
     setTriggerRect,
-    isOpen,
+    isOpen: internalIsOpen,
     setIsOpen,
     position,
   };
 
   return (
     <PopoverContext.Provider value={contextValue}>
-      <div {...props}>{children}</div>
+      <div {...rest}>{children}</div>
     </PopoverContext.Provider>
   );
 };
