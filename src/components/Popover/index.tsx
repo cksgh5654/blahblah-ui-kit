@@ -6,7 +6,6 @@ import {
   ReactNode,
   SetStateAction,
   useState,
-  useEffect,
 } from "react";
 import PopoverTrigger from "./PopoverTrigger";
 import PopoverContent from "./PopoverContent";
@@ -21,7 +20,6 @@ interface PopoverContextProps extends HTMLAttributes<HTMLDivElement> {
   setTriggerRect: Dispatch<SetStateAction<DOMRect>>;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  position: "bottom-left" | "bottom-center" | "bottom-right" | "bottom";
 }
 
 export const PopoverContext = createContext<PopoverContextProps>({
@@ -29,49 +27,24 @@ export const PopoverContext = createContext<PopoverContextProps>({
   triggerRect: new DOMRect(),
   isOpen: false,
   setIsOpen: () => {},
-  position: "bottom-right",
 });
 
 interface PopoverProps {
   children: ReactNode;
   className?: string;
-  position?: "bottom-left" | "bottom-center" | "bottom-right" | "bottom";
   isOpen?: boolean;
   onToggle?: (isOpen: boolean) => void;
 }
 const Popover: FC<PopoverProps> & PopoverCompoundProps = (props) => {
-  const {
-    children,
-    position = "bottom",
-    isOpen: externalIsOpen,
-    onToggle,
-    className,
-  } = props;
+  const { children, className } = props;
   const [triggerRect, setTriggerRect] = useState(new DOMRect());
-  const [internalIsOpen, setInternalIsOpen] = useState(false);
-
-  useEffect(() => {
-    if (externalIsOpen !== undefined) {
-      setInternalIsOpen(externalIsOpen);
-    }
-  }, [externalIsOpen]);
-
-  const setIsOpen = (value: SetStateAction<boolean>) => {
-    setInternalIsOpen((prevState) => {
-      const newValue = typeof value === "function" ? value(prevState) : value;
-      if (onToggle) {
-        onToggle(newValue);
-      }
-      return newValue;
-    });
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   const contextValue = {
     triggerRect,
     setTriggerRect,
-    isOpen: internalIsOpen,
+    isOpen,
     setIsOpen,
-    position,
   };
 
   return (
