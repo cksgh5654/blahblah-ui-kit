@@ -21,12 +21,7 @@ interface PopoverContextProps extends HTMLAttributes<HTMLDivElement> {
   setTriggerRect: Dispatch<SetStateAction<DOMRect>>;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  position:
-    | "bottom-left"
-    | "bottom-center"
-    | "bottom-right"
-    | "bottom"
-    | "bottom-fixed";
+  position: "bottom-left" | "bottom-center" | "bottom-right" | "bottom";
 }
 
 export const PopoverContext = createContext<PopoverContextProps>({
@@ -40,12 +35,7 @@ export const PopoverContext = createContext<PopoverContextProps>({
 interface PopoverProps {
   children: ReactNode;
   className?: string;
-  position?:
-    | "bottom-left"
-    | "bottom-center"
-    | "bottom-right"
-    | "bottom"
-    | "bottom-fixed";
+  position?: "bottom-left" | "bottom-center" | "bottom-right" | "bottom";
   isOpen?: boolean;
   onToggle?: (isOpen: boolean) => void;
 }
@@ -55,7 +45,7 @@ const Popover: FC<PopoverProps> & PopoverCompoundProps = (props) => {
     position = "bottom",
     isOpen: externalIsOpen,
     onToggle,
-    ...rest
+    className,
   } = props;
   const [triggerRect, setTriggerRect] = useState(new DOMRect());
   const [internalIsOpen, setInternalIsOpen] = useState(false);
@@ -86,7 +76,7 @@ const Popover: FC<PopoverProps> & PopoverCompoundProps = (props) => {
 
   return (
     <PopoverContext.Provider value={contextValue}>
-      <div {...rest}>{children}</div>
+      <div className={className}>{children}</div>
     </PopoverContext.Provider>
   );
 };
