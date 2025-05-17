@@ -30,7 +30,7 @@ $ npm i blahblah-front-common-ui-kit
 ### With Container
 
 ```jsx
-<div style={{ width: '300px' }}>
+<div style={{ width: "300px" }}>
   <AspectRatio ratio={16 / 8}>
     <AspectRatio.Image src="" alt="" className="" />
   </AspectRatio>
@@ -73,13 +73,13 @@ $ npm i blahblah-front-common-ui-kit
 ## Usage
 
 ```jsx
-const [selectedMenu, setSelectedMenu] = useState < string > '';
+const [selectedMenu, setSelectedMenu] = useState < string > "";
 
 const handleMenu = (value: string) => {
   setSelectedMenu(value);
 };
 
-const options = ['apple', 'banana', 'blueberry', 'grapes', 'pineapple'];
+const options = ["apple", "banana", "blueberry", "grapes", "pineapple"];
 
 <Select className="">
   <Select.Trigger className="">
@@ -115,7 +115,7 @@ const options = ['apple', 'banana', 'blueberry', 'grapes', 'pineapple'];
 
 ```jsx
 <Pagination total={235} value={0} onPageChange={handlePageChange}>
-  <Pagination.Navigator style={{ display: 'flex' }}>
+  <Pagination.Navigator style={{ display: "flex" }}>
     <Pagination.Buttons />
   </Pagination.Navigator>
 </Pagination>
@@ -159,7 +159,7 @@ const options = ['apple', 'banana', 'blueberry', 'grapes', 'pineapple'];
 
 ```jsx
 <Popover position="bottom-left">
-  <Popover.Trigger>Open</Popover.Trigger>
+  <Popover.Trigger>Open popover</Popover.Trigger>
   <Popover.Content>Place content for the popover here.</Popover.Content>
 </Popover>
 ```
